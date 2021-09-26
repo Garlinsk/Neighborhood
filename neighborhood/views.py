@@ -2,7 +2,11 @@ from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.http import HttpResponse
 import datetime as dt
 from .models import *
-
+from django.contrib import messages
+from django.conf import settings
+from django.templatetags.static import static
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import HttpResponse, Http404
 # Create your views here.
 
 
