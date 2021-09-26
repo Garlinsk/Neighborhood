@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-yellow bg-dark">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="text-white nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">AWARDS</a>
+                </li>
+            </ul>
+
+
+
+
+            <div class="col-sm-6 col-lg-6 d-flex justify-content-end">
+                {% if user.is_authenticated %}
+                <ul>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-block text-white success-color-dark"
+                            href="{%url 'new-project'%}">SUBMIT YOUR SITE
+                        </a>
+                    </li>
+                </ul>
+
+                <ul>
+                    <li class="dropdown list-unstyled">
+                        <a href="#" class="dropdown-toggle btn btn-md btn-default" data-toggle="dropdown" role="button"
+                            aria-expanded="false">My Account
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{%url 'profile'%}">Profile</a>
+                            </li>
+                            <li>
+                                <a href="/accounts/password/change">Change Password</a>
+                            </li>
+                            <li>
+                                <a href="/logout">Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                {% else %}
+
+                <li class="list-unstyled">
+                    <a class='btn btn-sm btn-default font-weight-bold' href="/accounts/login">Login</a>
+                    <a class='btn btn-sm btn-default font-weight-bold' href="/accounts/register">Register</a>
+                </li>
+                {% endif %}
+            </div>
+            {% if user.is_authenticated %}
+            <form class="form-inline" action="{% url 'search_results' %}">
+                <div class="md-form my-1">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
+                        name="keyword">
+                </div>
+                <!-- <button class="btn btn-outline-white btn-md my-2 my-sm-0 ml-3 btn-sm" type="submit">Search</button> -->
+            </form>
+            {% endif %}
+        </div>
+
+
+
+
+    </nav>
+
+</body>
+
+</html>
