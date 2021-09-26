@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'',include('neighborhood.urls')),
     url(r'^accounts/register/$',RegistrationView.as_view(form_class=RegisterForm),name='registration_register'),
     url(r'^logout/$', views.logout, {"next_page": '/'}),
+    url(r'^tinymce/', include('tinymce.urls')),
 ]

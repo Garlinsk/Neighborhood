@@ -1,0 +1,119 @@
+{%extends "registration/base.html"%}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container-fluid mb-4 pb-4" style="height: 100%;">
+    <div class="row">
+        <!-- Empty div -->
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8 mt-4 pt-2 ">
+            <div class="pb-2">
+                {% if user.profile.photo %}
+                <img src="{{ user.profile.photo.url }}" alt=""
+                    class="d-flex justify-content-start rounded-circle mb-1 img-fluid mr-1" style="width: 200px;">
+                {% else %}
+                <img src="https://source.unsplash.com/1600x900/?user,profile" alt=""
+                    class="d-flex justify-content-start rounded-circle mb-1 img-fluid mr-1" style="width: 150px;">
+                {% endif %}
+                <h4> <span class="font-weight-bold"> Username:</span> {{user.username}} </h4>
+                <p> <span class="font-weight-bold"> Email:</span> {{user.email}} </p>
+                <p> <span class="font-weight-bold"> Bio:</span> {{ user.profile.bio}} </p>
+                <p> <span class="font-weight-bold"> Neighborhood:</span> {{ user.profile.neighborhood.name}} </p>
+                <p> <span class="font-weight-bold"> Location:</span> {{ user.profile.neighborhood.location}} </p>
+                <p> <span class="font-weight-bold"> Country:</span> {{ user.profile.neighborhood.country.name}} </p>
+                <button class="btn btn-md btn-outline-info font-weight-bold" data-toggle="modal" data-target="#profile">
+                    Edit Profile</button>
+                <button class="btn btn-md btn-outline-info font-weight-bold" data-toggle="modal"
+                    data-target="#neighborhood"> Add Neighborhood</button>
+            </div>
+            <hr>
+
+
+        </div>
+        <!-- empty div -->
+        <div class="col-lg-2"></div>
+
+    </div>
+</div>
+
+<!-- Modal starts here -->
+<div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModal3Label"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div>
+                    <!-- profile update form  -->
+                    <h4 class="font-weight-bold">Update Your Profile</h4>
+                    <hr class="">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% bootstrap_form form%}
+
+                        <div class="form-group">
+                            <button type="submit" class="btn blue-gradient btn-lg mt-2 font-weight-bold btn-block">
+                                Update </button>
+                        </div>
+
+                        <input type="hidden" name="next" value="{{next}}">
+
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-md" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- start of Neighborhood form  -->
+
+<div class="modal fade" id="neighborhood" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModal3Label"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div>
+                    <!-- neighboorhood update form  -->
+                    <h4 class="font-weight-bold">Add Neighborhood</h4>
+                    <hr class="">
+                    <form method="post">
+                        {% csrf_token %}
+                        {% bootstrap_form form2 %}
+
+                        <div class="form-group">
+                            <button type="submit" class="btn blue-gradient btn-lg mt-2 font-weight-bold btn-block"> Add
+                                Neighborhood </button>
+                        </div>
+
+                        <input type="hidden" name="next" value="{{next}}">
+
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-md" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

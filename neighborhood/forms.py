@@ -40,7 +40,7 @@ class RegisterForm(RegistrationForm):
 
     def __init__(self, *args, **kwargs):
         super(RegistrationForm, self).__init__(*args, **kwargs)
-        self.helper = FormHelper()
+        # self.helper = FormHelper()
         for fieldname in ['username', 'password1', 'password2']:
             self.fields[fieldname].help_text = None
         self.helper.form_show_labels = True
