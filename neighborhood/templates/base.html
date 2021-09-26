@@ -1,4 +1,4 @@
-{% load bootstrap4 %}
+
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -32,6 +32,7 @@
 <body>
 
     {% include "navbar.html" %}
+
     {% block content %} 
     <div class="jumbotron jumbotron-fluid bg-info mb-1 pb-3 pt-4">
         <div class="">
@@ -41,6 +42,7 @@
     </div>
     
     {%endblock%}
+    
     {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
