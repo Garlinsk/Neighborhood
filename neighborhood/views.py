@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.http import HttpResponse
 import datetime as dt
+from .models import *
 
 # Create your views here.
 
@@ -8,4 +9,4 @@ import datetime as dt
 def index(request):
     date = dt.date.today()
     # all_neighborhoods = Neighborhood.get_neighborhoods()
-    return HttpResponse(request,'index.html')
+    return render(request, 'index.html', {"date": date})

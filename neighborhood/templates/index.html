@@ -1,8 +1,10 @@
-{%extends 'base.html' %}
+{%extends 'base.html'%}
 
 {% block content %}
-
+{% if user.is_authenticated %}
 {{block.super}}
+
+
 
 <div class="container-fluid" style="height: 100%;">
     <div class="row align-items-center">
@@ -75,7 +77,9 @@
                 {% endif %}
 
             </div>
-        </div>
+        </div><!-- <li class="nav-item">
+                        <a class="nav-link font-weight-bold" href="{%url 'new-business'%}">ADD BUSINESS</a>
+                    </li> -->
 
         <!-- second column -->
 
@@ -108,7 +112,7 @@
 
     <div id="intro">
 
-        <div class="mask rgba-black-light" style="height: 100vh;">
+        <div class="mask rgba-indigo-light" style="height: 100vh;">
 
             <div class="container-fluid d-flex align-items-center justify-content-center h-50">
 
@@ -117,16 +121,17 @@
                     <div class="col-lg-12 pt-5 mt-5">
 
                         <!-- Heading -->
-                        <h3 class="display-4 font-weight-bold white-text pt-5">Welcome to My Neighborhood</h3>
+                        <h3 class="display-4 font-weight-bold yellow-text pt-5">Welcome to Neighborhood</h3>
 
                         <!-- Divider -->
-                        <hr class="hr-light">
+                        <hr class="hr-black">
+                        
                         <!-- <p class="font-weight-bold white-text">The awards of design, creativity and innovation on the internet</p> -->
-                        <a href="/accounts/login"><button type="button" class="btn btn-outline-white">Login<i
-                                    class="fa fa-book ml-2"></i></button>
+                        <a href="/accounts/login"><button type="button" class="btn btn-outline-green">Login<i
+                                    class="fa fa-note ml-2"></i></button>
                         </a>
-                        <a href="accounts/register"><button type="button" class="btn btn-outline-white">Sign Up<i
-                                    class="fa fa-book ml-2"></i></button>
+                        <a href="accounts/register"><button type="button" class="btn btn-outline-green">Sign Up<i
+                                    class="fa fa-note ml-2"></i></button>
                         </a>
                     </div>
 
