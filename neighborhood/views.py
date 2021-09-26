@@ -9,4 +9,30 @@ from .models import *
 def index(request):
     date = dt.date.today()
     # all_neighborhoods = Neighborhood.get_neighborhoods()
-    return render(request, 'index.html', {"date": date})
+    if 'neighborhood' in request.GET and request.GET["neighborhood"]:
+        neighborhoods = request.GET.get("neighborhood")
+        searched_neighborhood = Business.get_by_neighborhood(neighborhoods)
+        all_posts = Posts.get_by_neighborhood(neighborhoods)
+        message = f"{neighborhoods}"
+        all_neighborhoods = Neighborhood.get_neighborhoods()
+
+        return render(request, 'index.html', {"message": message, "location": searched_neighborhood,
+                                              "all_neighborhoods": all_neighborhoods, "all_posts": all_posts})
+
+    else:
+        message = "No Neighborhood Found!"
+
+    return render(request, 'index.html', {"date": date, "all_neighborhoods": all_neighborhoods, })
+
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}')
+            return redirect('/')
+
+    else:
+        form = RegisterForm()
+    return render(request, 'registration/registration_form.html', {'form': form})
