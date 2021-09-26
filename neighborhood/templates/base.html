@@ -1,9 +1,14 @@
-{% load bootstrap4 %}
+{% load static %}
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+
 
     {% if title %}
     <title>Neighborhood - {{title}}</title>
@@ -11,13 +16,15 @@
     <title> Neighborhood </title>
     {% endif %}
     {% block styles %}
-    {% bootstrap_css %}
+  
     {% endblock %}
 
 </head>
 
 <body>
-    {% block content %} <h1>News for {{date|date:"l d-F Y"}}</h1> {%endblock%}
+    {% block content %} 
+    
+    {%endblock%}
     {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     {% bootstrap_javascript %}
