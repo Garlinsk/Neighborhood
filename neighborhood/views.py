@@ -16,7 +16,7 @@ from .forms import *
 
 def index(request):
     date = dt.date.today()
-    
+
     all_neighborhoods = Neighborhood.get_neighborhoods()
     if 'neighborhood' in request.GET and request.GET["neighborhood"]:
         neighborhoods = request.GET.get("neighborhood")
@@ -119,7 +119,6 @@ def user_profiles(request):
 
     return render(request, 'registration/profile.html', {"form": form, "form2": form2})
 
-
 @login_required(login_url='/accounts/login/')
 def new_post(request):
     current_user = request.user
@@ -138,4 +137,4 @@ def new_post(request):
 
     else:
         form = NewPostForm()
-    return render(request, 'new-post.html', {"form": form})
+    return render(request, 'new_post.html', {"form": form})

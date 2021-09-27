@@ -58,6 +58,7 @@
 
                             </tr>
                         </thead>
+                        
                         <tbody>
                             {% for biz in location%}
                             <tr>
@@ -68,6 +69,8 @@
 
                             </tr>
                             {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
                 <!-- end of table  -->
 
@@ -77,11 +80,8 @@
                 {% endif %}
 
             </div>
-        </div><!-- <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="{%url 'new-business'%}">ADD BUSINESS</a>
-                    </li> -->
-
-        <!-- second column -->
+        </div>
+        
 
         <div class="col-lg-3 pt-2 mt-2 mb-4 pb-2">
             {% if location %}
@@ -125,7 +125,7 @@
 
                         <!-- Divider -->
                         <hr class="hr-black">
-                        
+
                         <!-- <p class="font-weight-bold white-text">The awards of design, creativity and innovation on the internet</p> -->
                         <a href="/accounts/login"><button type="button" class="btn btn-outline-green">Login<i
                                     class="fa fa-note ml-2"></i></button>

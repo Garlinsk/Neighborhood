@@ -1,0 +1,72 @@
+{% extends "base.html"%}
+{% block content %}
+<div style="height: 100%;">
+    <div class="">
+        {% if businesses %}
+        <div class="jumbotron jumbotron-fluid bg-info">
+            <div class="">
+                <h2 class="display-6 text-center font-weight-bold">Found {{ businesses|length }} business for searched
+                    term {{message}}</h2>
+            </div>
+        </div>
+        {% else %}
+        <div class="jumbotron jumbotron-fluid bg-light">
+            <div class="">
+                <h2 class="display-5 text-center font-weight-bold">Found 0 business for the searched term {{message}}
+                </h2>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+
+    <div class="container-fluid">
+        {% if businesses %}
+        <!-- start of table  -->
+        <div class="table-responsive">
+            <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead class="black white-text">
+                    <tr class="font-weight-bold">
+                        <th class="th-sm">Business Name
+                        </th>
+                        <th class="th-sm">Business Address
+                        </th>
+                        <th class="th-sm">Business Email
+                        </th>
+                        <th class="th-sm">Neighborhood
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for biz in businesses %}
+                    <tr>
+                        <td>{{biz.name}}</td>
+                        <td>{{biz.address}}</td>
+                        <td>{{biz.email}}</td>
+                        <td>{{biz.neighborhood.name}}</td>
+
+                    </tr>
+                    {% endfor %}
+
+
+                </tbody>
+                <!-- <tfoot>
+                    <tr>
+                    <th class="th-sm">Name
+                      </th>
+                      <th class="th-sm">Address
+                      </th>
+                      <th class="th-sm">Email
+                      </th>
+                      <th class="th-sm">Neighborhood
+                      </th>
+                    </tr>
+                  </tfoot> -->
+            </table>
+        </div>
+        <!-- end of table  -->
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

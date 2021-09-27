@@ -15,6 +15,8 @@ from decouple import config,Csv
 import os
 from pathlib import Path
 
+SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
+
 MODE = config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
