@@ -88,7 +88,7 @@ def new_business(request):
 
     else:
         form = NewBusinessForm()
-    return render(request, 'new-business.html', {"form": form})
+    return render(request, 'new_business.html', {"form": form})
 
 
 @login_required(login_url='/accounts/login/')
