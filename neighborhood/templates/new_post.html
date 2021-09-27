@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block content%}
+
+<div class="jumbotron jumbotron-fluid bg-info pb-3 pt-4">
+
+    <h2 class="display-5 text-center font-weight-bold">SUBMIT NEWS OR UPDATE ABOUT YOUR NEIGHBORHOOD </h2>
+
+</div>
+<div class="container">
+    <div class="row">
+        <!-- Empty div -->
+        <div class="col-lg-3"></div>
+
+        <div class="col-lg-6 pt-2 ">
+            <form action="{%url 'new-post'%}" method="post">
+                {%csrf_token%}
+
+                {% bootstrap_form form%}
+                <small>Did you set your neighborbood? If not, choose your Neighborhood in your <a
+                        href="/accounts/profile/"> Profile page</a>. </small> <br>
+                <input type="submit" class="btn btn-success btn-lg font-weight-bold" value="SUBMIT">
+            </form>
+        </div>
+
+        <div class="col-lg-3"></div>
+
+    </div>
+</div>
+{% endblock %}

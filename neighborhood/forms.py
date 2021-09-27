@@ -38,18 +38,18 @@ class RegisterForm(RegistrationForm):
         fields = ('username', 'first_name', 'last_name',
                   'email', 'password1', 'password2',)
 
-    def __init__(self, *args, **kwargs):
-        super(RegistrationForm, self).__init__(*args, **kwargs)
-        # self.helper = FormHelper()
-        for fieldname in ['username', 'password1', 'password2']:
-            self.fields[fieldname].help_text = None
-        self.helper.form_show_labels = True
-
+    widgets = {
+        'first_name': forms.TextInput(attrs={'class': 'form-control names', 'placeholder': "First Name", 'label': 'First Name'}),
+        'last_name': forms.TextInput(attrs={'class': 'form-control names', 'placeholder': "Second Name", 'label': 'Second Name'}),
+        'email': forms.TextInput(attrs={'class': 'form-control names', 'placeholder': "Email Address", 'label': 'Email Address'}),
+        'username': forms.TextInput(attrs={'class': 'form-control names', 'placeholder': "Username", 'label': 'Username'}),
+        'password1': forms.PasswordInput(attrs={'class': 'form-control ', 'type': 'password', 'placeholder': "Password", 'label': 'Password'}),
+        'password2': forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': "Confirm Password", 'label': 'Confirm Password'}),
+    }
 
 class NewPostForm(forms.ModelForm):
     class Meta:
         model = Posts
         exclude = ['Author', 'pub_date', 'author_profile', 'neighborhood']
-        widgets = {
-            'post': forms.Textarea(attrs={'rows': 2, 'cols': 10, }),
+        widgets = {'post': forms.Textarea(attrs={'rows': 2, 'cols': 10, }),
         }

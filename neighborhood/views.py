@@ -9,11 +9,14 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, Http404
 from django.contrib.auth.decorators import login_required
 from .forms import *
+
+
 # Create your views here.
 
 
 def index(request):
     date = dt.date.today()
+    
     all_neighborhoods = Neighborhood.get_neighborhoods()
     if 'neighborhood' in request.GET and request.GET["neighborhood"]:
         neighborhoods = request.GET.get("neighborhood")

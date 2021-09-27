@@ -36,7 +36,7 @@ class Neighborhood(models.Model):
         return projects
 
     @classmethod
-    def get_neighborhood(request, neighborhood):
+    def get_neighborhood(request, Neighborhood):
         try:
             project = Neighborhood.objects.get(pk=id)
 
