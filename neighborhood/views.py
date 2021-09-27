@@ -44,7 +44,7 @@ def register(request):
 
     else:
         form = RegisterForm()
-    return render(request, 'registration_form.html', {'form': form})
+    return render(request, 'registration/registration_form.html', {'form': form})
 
 
 @login_required(login_url='/accounts/login/')
