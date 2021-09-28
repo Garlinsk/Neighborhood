@@ -1,36 +1,33 @@
+{% extends 'base.html' %}
 {% load bootstrap4 %}
-{% load static %}
 
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% block content%}
 
-    <title>New Article</title>
-    {{form.media}}
 
-    {% block styles %} {% bootstrap_css %}
-    <link rel="stylesheet" href="{% static 'css/news.css' %}"> {% endblock %}
+<div class="jumbotron jumbotron-fluid bg-info pb-3 pt-4">
 
-</head>
+    <h2 class="display-5 text-center font-weight-bold">SUBMIT BUSINESS INFORMATION </h2>
 
-<body>
+</div>
+<div class="container">
+    <div class="row">
+        <!-- Empty div -->
+        <div class="col-lg-3"></div>
 
-    <form action="{%url 'new-article'%}" method="post" enctype="multipart/form-data">
-        {%csrf_token%}
+        <div class="col-lg-6 pt-2 ">
+            <form action="{%url 'new-business'%}" method="post" enctype="multipart/form-data">
+                {%csrf_token%}
 
-        {% bootstrap_form form%}
-        <input type="submit" class="btn btn-success btn-lg" value="Post">
-    </form>
+                {% bootstrap_form form%}
+                <small>Can't find your neighborhood? You can add a Neighborhood in your <a href="/accounts/profile/">
+                        Profile page</a>. </small> <br>
+                <input type="submit" class="btn btn-success btn-lg font-weight-bold" value="SUBMIT">
+            </form>
+        </div>
 
-    {% block scripts %}
-    <small>Can't find your neighborhood? You can add a Neighborhood in your <a href="/accounts/profile/"> Profile page</a>.
-    </small> <br>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    {% bootstrap_javascript %} {% endblock %}
+        <div class="col-lg-3"></div>
 
-</body>
-
-</html>
+    </div>
+</div>
+{% endblock %}
