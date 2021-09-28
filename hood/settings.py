@@ -15,7 +15,9 @@ from decouple import config,Csv
 import os
 from pathlib import Path
 
-SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
+
+
+
 
 MODE = config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
@@ -176,6 +178,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 
 
 # Configure Django App for Heroku.
