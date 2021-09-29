@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
-from django.http import HttpResponse
+from django.http import HttpResponse, request
 import datetime as dt
 from .models import *
 from django.contrib import messages
@@ -137,3 +137,5 @@ def new_post(request):
     else:
         form = NewPostForm()
     return render(request, 'new_post.html', {"form": form})
+
+
