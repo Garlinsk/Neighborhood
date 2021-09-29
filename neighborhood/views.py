@@ -16,8 +16,8 @@ from .forms import *
 
 def index(request):
     date = dt.date.today()
-
     all_neighborhoods = Neighborhood.get_neighborhoods()
+    
     if 'neighborhood' in request.GET and request.GET["neighborhood"]:
         neighborhoods = request.GET.get("neighborhood")
         searched_neighborhood = Business.get_by_neighborhood(neighborhoods)
@@ -25,8 +25,7 @@ def index(request):
         message = f"{neighborhoods}"
         all_neighborhoods = Neighborhood.get_neighborhoods()
 
-        return render(request, 'index.html', {"message": message, "location": searched_neighborhood,
-                                              "all_neighborhoods": all_neighborhoods, "all_posts": all_posts})
+        return render(request, 'index.html', {"message": message, "location": searched_neighborhood,"all_neighborhoods": all_neighborhoods, "all_posts": all_posts})
 
     else:
         message = "No Neighborhood Found!"
