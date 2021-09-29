@@ -21,9 +21,10 @@ from neighborhood.forms import RegisterForm
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^neighborhood/',include('neighborhood.urls')),
+    url(r'',include('neighborhood.urls')),
     url(r'^accounts/register/$',RegistrationView.as_view(form_class=RegisterForm),name='registration_register'),
     url(r'^logout/', views.LogoutView.as_view(), name='logout'),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
+    
 ]
